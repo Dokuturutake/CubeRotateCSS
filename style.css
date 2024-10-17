@@ -1,0 +1,146 @@
+:root {
+    --primary-color: #fcac07;
+    --secondary-color: #fc7f1f;
+    --tertiary-color: #ef5f06;
+    --quaternary-color: #bf4006;
+    --quinary-color: #9e1806;
+    --background-color: #fff5e6;
+    --text-color: #4a3000;
+    --dice-size: 200px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.scene {
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: var(--dice-size);
+    height: var(--dice-size);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.dice {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--primary-color);
+    transition: transform 1s;
+}
+
+.face-1 { transform: rotateY(0deg) translateZ(calc(var(--dice-size) / 2)); }
+.face-2 { transform: rotateY(90deg) translateZ(calc(var(--dice-size) / 2)); }
+.face-3 { transform: rotateX(-90deg) translateZ(calc(var(--dice-size) / 2)); }
+.face-4 { transform: rotateX(90deg) translateZ(calc(var(--dice-size) / 2)); }
+.face-5 { transform: rotateY(-90deg) translateZ(calc(var(--dice-size) / 2)); }
+.face-6 { transform: rotateY(180deg) translateZ(calc(var(--dice-size) / 2)); }
+
+.dice.unfolded .face-1 { transform: rotateY(0deg) translateZ(0); }
+.dice.unfolded .face-2 { transform: rotateY(90deg) translateX(50%); }
+.dice.unfolded .face-3 { transform: rotateX(-90deg) translateY(-50%); }
+.dice.unfolded .face-4 { transform: rotateX(90deg) translateY(50%); }
+.dice.unfolded .face-5 { transform: rotateY(-90deg) translateX(-50%); }
+.dice.unfolded .face-6 { transform: rotateY(180deg) translateZ(calc(-1 * var(--dice-size))); }
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bullet-navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid var(--tertiary-color);
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.bullet.active {
+    background-color: var(--tertiary-color);
+}
+
+.roll-button, .unfold-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.roll-button:hover, .unfold-button:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (orientation: landscape) {
+    .navigation {
+        flex-direction: column;
+        left: auto;
+        right: 20px;
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+
+    .bullet-navigation {
+        flex-direction: column;
+    }
+
+    .bullet {
+        margin: 5px 0;
+    }
+
+    .roll-button, .unfold-button {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

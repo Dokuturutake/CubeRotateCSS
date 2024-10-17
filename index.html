@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Dice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scene">
+        <div class="container">
+            <div id="dice" class="dice">
+                <div class="face face-1">1</div>
+                <div class="face face-2">2</div>
+                <div class="face face-3">3</div>
+                <div class="face face-4">4</div>
+                <div class="face face-5">5</div>
+                <div class="face face-6">6</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div class="bullet-navigation">
+            <button class="bullet" data-face="1"></button>
+            <button class="bullet" data-face="2"></button>
+            <button class="bullet" data-face="3"></button>
+            <button class="bullet" data-face="4"></button>
+            <button class="bullet" data-face="5"></button>
+            <button class="bullet" data-face="6"></button>
+        </div>
+        <button id="rollDice" class="roll-button">Roll</button>
+        <button id="unfoldDice" class="unfold-button">Unfold</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
